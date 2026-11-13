@@ -1,0 +1,18 @@
+[project]
+name = "basic-grids"
+version = "0.1.0"
+requires-python = ">=3.11"                # 3.11 is the first with tomllib (reads configs); kept low so Colab can run it
+dependencies = [
+    "matplotlib>=3.11.2",
+    "polars>=2.1.0",
+]
+
+[dependency-groups]
+dev = [
+    "jupyterlab>=4.6.6",
+    "pytest>=9.2.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

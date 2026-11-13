@@ -1,0 +1,26 @@
+# Q-learning vs greedy vs random: one 10x10 world, 5 items that respawn when collected.
+# The same settings as world.py, so this reproduces q_vs_greedy.png (20 runs of 100 episodes).
+
+experiment = "q_vs_greedy"     # results go in data/raw/q_vs_greedy/
+seeds = 20                     # 20 runs, seeds 0-19; or a list, e.g. [0, 1, 2]
+episodes = 100                 # per run; the Q agent learns across them and starts from scratch each run
+
+[world]
+width = 10
+height = 10
+num_items = 5
+item_value = 5
+num_steps = 100                # steps per episode
+
+[agents]                       # how many of each; they move in this order every step
+random = 1
+greedy = 1
+q = 1
+
+[q]
+alpha = 0.1                    # learning rate
+gamma = 0.9                    # how much future points count
+epsilon = 0.1                  # chance of a random move
+
+[record]
+steps_every = 1                # keep every move of every episode (about 30,000 rows a run: small); 10 = episodes 1, 11, 21... and the last
